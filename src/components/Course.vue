@@ -43,7 +43,7 @@
       <h3 class="page-header">{{title}}</h3>
       <div class="container">
         <div class="row">
-          <div v-for="(user,index) in db.user" :key="user.id" class="col-md-3 table-bordered text-center">
+          <div v-for="user in db.user" :key="user.id" class="col-md-3 table-bordered text-center">
             <div class="col-md-5 h4">{{user.name}}</div>
             <div class="col-md-7 h4">
               <button :class="chooseCssGood(user.id)" @click="cscs(true,cid,sid,user.id)">已掌握</button>
@@ -65,9 +65,6 @@ export default {
     return {
       cid:this.db.section.length-1,
       sid:this.db.section[this.db.section.length-1].course.length-1,
-      styleNor:"btn btn-xs",
-      styleCssGood:"btn btn-xs btn-success",
-      styleCssBad:"btn btn-xs btn-danger",
       courses : this.db.section[this.db.section.length-1],
       date  : this.db.section[this.db.section.length-1].date,
       title : this.db.section[this.db.section.length-1].course[this.db.section[this.db.section.length-1].course.length-1].title,
@@ -89,15 +86,15 @@ export default {
     },
     chooseCssGood(uid){
       if(this.studys.good.indexOf(uid)!== -1){
-        return this.styleCssGood
+        return "btn btn-xs btn-success"
       }
-      return this.styleNor
+      return "btn btn-xs"
     },
     chooseCssBad(uid){
       if(this.studys.bad.indexOf(uid)!== -1){
-        return this.styleCssBad
+        return "btn btn-xs btn-danger"
       }
-      return this.styleNor
+      return "btn btn-xs"
     }
   },
 };
