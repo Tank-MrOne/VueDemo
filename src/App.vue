@@ -5,18 +5,18 @@
         <div class="btn btn-primary btn-xs">登入</div>
       </div>
       <h2 class="page-header">VUE - 学习概况</h2>
-      <div class="btn btn-danger toIndex">【 主页 】</div>
+      <div class="btn btn-danger toIndex" @click="showComponents(0)">【 主页 】</div>
       <div class="btn btn-primary toSingIn">【 上午 - 签到 】</div>
       <div class="btn btn-primary toSingOut">【 下午 - 签到 】</div>
-      <div class="btn btn-warning toSingStat">【 签到统计 】</div>
-      <div class="btn btn-warning toCourseStat">【 课程反馈统计 】</div>
-      <div class="btn btn-success toFeedStat">【 意见反馈 】</div>
+      <div class="btn btn-warning toSingStat"  @click="showComponents(1)">【 签到统计 】</div>
+      <div class="btn btn-warning toCourseStat" @click="showComponents(2)">【 课程反馈统计 】</div>
+      <div class="btn btn-success toFeedStat" @click="showComponents(3)">【 意见反馈 】</div>
       <div class="btn btn-info toAddCourse">【 添加小节 】</div>
       <div class="contentMain">
-        <Page/>
-        <Course/>
-        <Singup/>
-        <Common/>
+        <Page v-show="show[0]" :db="db"/>
+        <Course v-show="show[2]" :db="db"/>
+        <Singup v-show="show[1]" :db="db"/>
+        <Common v-show="show[3]" :db="db"/>
       </div>
       <div class="warpper-back">
         <div class="warpper center">
@@ -78,8 +78,15 @@ export default {
     },
     data() {
         return {
-            db : db
+            db : db,
+            show : [true,false,false,false]
         }
+    },
+    methods: {
+      showComponents(index){
+        this.show = [false,false,false,false];
+        this.show[index] = true;
+      }
     },
 };
 

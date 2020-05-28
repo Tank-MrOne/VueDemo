@@ -20,8 +20,13 @@
 - App.vue	=> vue入口文件
   - Page.vue  => 主线组件
   - Course.vue  =>课程组件
-  - Singup.vue  =>签到组件a
+  - Singup.vue  =>签到组件
   - Common.vue  =>评论组件
+- db.json 
+  - user 对象存储所有学生信息
+  - section 对象存储所有课程信息
+  - sign 对象存储所有签到信息
+  - common 对象存储所有评论信息
 
 
 
