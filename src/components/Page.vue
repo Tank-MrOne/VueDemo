@@ -12,7 +12,7 @@
             <td class="text-center">签到率</td>
             <td class="text-center">详细信息</td>
           </tr>
-          <tr v-for="(user, index) in db.user" :key="user.id">
+          <tr v-for="user in db.user" :key="user.id">
             <td>{{user.id}}</td>
             <td>{{user.name}}</td>
             <td class="text-center">{{vueProficiency(user.id)}}%</td>
@@ -24,7 +24,7 @@
         </tbody>
       </table>
     </div>
-    <div class="col-md-4" v-for="(section, index) in db.section" :key="section.id">
+    <div class="col-md-4" v-for="section in db.section" :key="section.id">
       <h3 class="page-header">
         课程概览
         <span class="datetime">{{section.date}}</span>
@@ -34,10 +34,10 @@
           <td>课程小节名称</td>
           <td class="text-center">反馈</td>
         </tr>
-        <tr v-for="(course, index) in section.course" :key="course.id">
+        <tr v-for="course in section.course" :key="course.id">
           <td>{{course.title}}</td>
           <td class="text-center">
-            <div class="btn btn-warning btn-xs">反馈</div>
+            <div @click="showCouse()" class="btn btn-warning btn-xs">反馈</div>
           </td>
         </tr>
       </table>
@@ -49,7 +49,7 @@
 
 <script type="text/ecmascript-6">
 export default {
-  props: ["db"],
+  props: ["db",'chooseCourse'],
   methods: {
     vueProficiency(id) {
       let num = 0;
@@ -89,6 +89,9 @@ export default {
       }
       let b = parseInt((num / sum) * 100);
       return b;
+    },
+    showCouse(){
+      this.chooseCourse();
     }
   }
 };

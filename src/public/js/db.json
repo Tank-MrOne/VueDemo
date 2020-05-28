@@ -300,12 +300,12 @@
   "common" :[
     {
       "id":1,
-      "userid":"1",
-      "value":"vue真不错"
+      "userName":"万俊卿",
+      "value":"不容易呀"
     },
     {
       "id":2,
-      "userid":"10",
+      "userName":"周爱悦",
       "value":"vue性能很好"
     }
   ]
